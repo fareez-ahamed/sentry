@@ -15,4 +15,14 @@ export class User {
     @Column()
     age: number;
 
+    @Column({
+        default: ""
+    })
+    passwordHash: string;
+
+    @Column({
+        default: ""
+    })
+    role: string;
+
 }

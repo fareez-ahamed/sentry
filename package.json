@@ -2,19 +2,19 @@
    "name": "with-typescript",
    "version": "1.0.0",
    "scripts": {
-      "dev": "next",
+      "dev": "ts-node server.ts",
       "build": "next build",
-      "start": "ts-node src/index.ts",
       "type-check": "tsc"
    },
    "dependencies": {
       "@zeit/next-typescript": "^1.1.1",
+      "express": "^4.16.4",
+      "mysql": "^2.14.1",
       "next": "^8.1.0",
       "react": "^16.8.6",
       "react-dom": "^16.8.6",
-      "typeorm": "0.2.16",
       "reflect-metadata": "^0.1.10",
-      "mysql": "^2.14.1"
+      "typeorm": "0.2.16"
    },
    "devDependencies": {
       "@types/next": "^7.0.6",
