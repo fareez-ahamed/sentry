@@ -1,0 +1,28 @@
+{
+   "name": "with-typescript",
+   "version": "1.0.0",
+   "scripts": {
+      "dev": "next",
+      "build": "next build",
+      "start": "ts-node src/index.ts",
+      "type-check": "tsc"
+   },
+   "dependencies": {
+      "@zeit/next-typescript": "^1.1.1",
+      "next": "^8.1.0",
+      "react": "^16.8.6",
+      "react-dom": "^16.8.6",
+      "typeorm": "0.2.16",
+      "reflect-metadata": "^0.1.10",
+      "mysql": "^2.14.1"
+   },
+   "devDependencies": {
+      "@types/next": "^7.0.6",
+      "@types/react": "^16.4.16",
+      "@types/react-dom": "16.0.11",
+      "typescript": "2.5.2",
+      "ts-node": "3.3.0",
+      "@types/node": "^8.0.29"
+   },
+   "license": "ISC"
+}
