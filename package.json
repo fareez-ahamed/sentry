@@ -4,7 +4,8 @@
    "scripts": {
       "dev": "ts-node server.ts",
       "build": "next build",
-      "type-check": "tsc"
+      "type-check": "tsc",
+      "setup": "ts-node scripts/setup.ts"
    },
    "dependencies": {
       "@zeit/next-typescript": "^1.1.1",
