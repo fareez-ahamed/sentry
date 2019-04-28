@@ -1,10 +1,17 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
+type UserRole = "admin" | "user";
+
 @Entity()
 export class User {
 
     @PrimaryGeneratedColumn()
     id: number;
+
+    @Column({
+        unique: true
+    })
+    email: string;
 
     @Column()
     firstName: string;
@@ -21,8 +28,8 @@ export class User {
     passwordHash: string;
 
     @Column({
-        default: ""
+        default: "user"
     })
-    role: string;
+    role: UserRole;
 
 }
