@@ -1,33 +1,35 @@
 import * as React from 'react'
 import BaseLayout from '../components/BaseLayout';
-import { Paper, withStyles, Typography, TextField, Button } from '@material-ui/core';
+import { Grid, Header, Form, Segment, Button, Icon }  from 'semantic-ui-react';
 
-const styles = theme => ({
-  root: {
-    ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    maxWidth: theme.spacing.unit * 50,
-    margin: "100px auto"
-    // marginLeft: theme.spacing.unit * 60,
-    // marginRight: theme.spacing.unit * 60,
-    // marginTop: theme.spacing.unit * 10,
-    // marginBottom: theme.spacing.unit * 10
-  }
-})
-
-const IndexPage = ({classes}) => {
+const IndexPage = () => {
   return (
-    <BaseLayout title="Sign In" bgcolor="white">
-      <Paper className={classes.root} elevation={1}>
-        <form autoComplete="off" noValidate>
-          <TextField type="Email" variant="outlined" label="Email" margin="normal" fullWidth />
-          <TextField type="Password" variant="outlined" label="Password" margin="normal" fullWidth />
-          <Button type="submit" size="large" color="primary" variant="contained" fullWidth>Sign In</Button>
-        </form>
-      </Paper>
+    <BaseLayout title="Sign In" bgcolor="#eaeaea">
+       <style>{`
+      body > div,
+      body > div > div {
+        height: 100%;
+      }
+      `}</style>
+      <Grid textAlign="center" verticalAlign="middle" style={{ height: '100%' }}>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header>
+            Sentry
+          </Header>
+          <Form size="large">
+            <Segment stacked>
+              <Form.Input icon="user" iconPosition="left" placeholder="Email" />
+              <Form.Input icon="lock" iconPosition="left" placeholder="Password" type="password" />
+              <Button icon color="blue" size="large" labelPosition="right" fluid>
+                Sign In
+                <Icon name="right arrow" />
+              </Button>
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
     </BaseLayout>
   )
 }
 
-export default withStyles(styles)(IndexPage);
+export default IndexPage;
