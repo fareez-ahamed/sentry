@@ -16,11 +16,11 @@ const IndexPage = () => {
           <Header>
             Sentry
           </Header>
-          <Form size="large">
+          <Form size="large" action="login" method="post">
             <Segment stacked>
-              <Form.Input icon="user" iconPosition="left" placeholder="Email" />
-              <Form.Input icon="lock" iconPosition="left" placeholder="Password" type="password" />
-              <Button icon color="blue" size="large" labelPosition="right" fluid>
+              <Form.Input name="email" icon="user" iconPosition="left" placeholder="Email" />
+              <Form.Input name="password" icon="lock" iconPosition="left" placeholder="Password" type="password" />
+              <Button type="submit" icon color="blue" size="large" labelPosition="right" fluid>
                 Sign In
                 <Icon name="right arrow" />
               </Button>

@@ -8,6 +8,11 @@ const handle = app.getRequestHandler()
 app.prepare()
 .then(() => {
   const server = express()
+
+  server.post('/login', (req, res) => {
+    //TODO
+    res.send(req.params.email);
+  });
     
   server.get('*', (req, res) => {
     return handle(req, res)

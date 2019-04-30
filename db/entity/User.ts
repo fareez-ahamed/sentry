@@ -2,6 +2,8 @@ import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
 type UserRole = "admin" | "user";
 
+type PasswordType = "productive" | "initial";
+
 @Entity()
 export class User {
 
@@ -26,6 +28,9 @@ export class User {
         default: ""
     })
     passwordHash: string;
+
+    @Column({ default: "initial" })
+    passwordType: PasswordType;
 
     @Column({
         default: "user"
