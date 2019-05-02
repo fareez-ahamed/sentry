@@ -1,59 +1,45 @@
-import { getRepository, createConnection } from "typeorm";
-import { User } from "./db/entity/User";
+import { createConnection } from "typeorm";
+import routes from "./routes/app/main";
 
-const express    = require('express')
-const next       = require('next')
+const express = require('express')
+const next = require('next')
 const bodyParser = require('body-parser')
-const bcrypt     = require('bcrypt')
-    
-const dev    = process.env.NODE_ENV !== 'production'
-const app    = next({ dev })
+
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
 const handle = app.getRequestHandler()
 
+console.log("Starting")
+
 app.prepare()
-.then(() => {
-  createConnection().then(() => setupExpress())
-})
-.catch((ex) => {
-  console.error(ex.stack)
-  process.exit(1)
-})
+  .then(() => {
+    //Setting up the database connection
+    console.log("Setting up the Database Connection")
+    return createConnection().then()
+  })
+  .then(() => {
+    console.log("Setting up the Routes")
+    const server = express()
 
-const validateUser = (email, password) : Promise<boolean> => {
-  return getRepository(User).find({ email })
-    .then(users => {
-      if( users.length !== 0 ) {
-        return users[0].passwordHash
-      } else {
-        throw Error("User not found")
-      }
+    //Global Middlewares
+    server.use(bodyParser.json())
+    server.use(bodyParser.urlencoded({ extended: false }))
+
+    //Route handler for app POST requests
+    server.use('/', routes)
+
+    //Route handler for Next.js Pages
+    server.get('*', (req, res) => handle(req, res))
+
+    //Starting the Server
+    console.log("Starting the Server")
+    server.listen(3000, (err) => {
+      if (err) throw err
+      console.log('> Ready on http://localhost:3000')
     })
-    .then(originalHash => bcrypt.compare(password, originalHash))
-}
-
-const setupExpress = () => {
-
-  const server = express()
-
-  server.use(bodyParser.urlencoded({ extended: false }))
-  server.use(bodyParser.json())
-
-  server.post('/login', (req, res) => {
-    validateUser(req.body.email, req.body.password).then(result => {
-      if(result) 
-        res.send("Success")
-      else 
-        res.send("Failure")
-    }).catch(e => res.send(e.toString()))
-  });
-    
-  server.get('*', (req, res) => {
-    return handle(req, res)
+    return null
   })
-    
-  server.listen(3000, (err) => {
-    if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+  .catch((ex) => {
+    console.error(ex.stack)
+    process.exit(1)
   })
-
-}
