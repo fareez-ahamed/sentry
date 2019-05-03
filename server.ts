@@ -1,5 +1,6 @@
 import { createConnection } from "typeorm";
 import routes from "./routes/app/main";
+import { nextGuard } from "./middlewares/next";
 
 // Express.js dependencies
 const express = require('express')
@@ -31,6 +32,7 @@ app.prepare()
     server.use(bodyParser.json())
     server.use(bodyParser.urlencoded({ extended: false }))
     server.use(cookieSession({ name: 'sentry', secret: '123456' }))
+    server.use(nextGuard)
 
     //Route handler for app POST requests
     server.use('/', routes)
