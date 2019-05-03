@@ -1,6 +1,6 @@
 import { createConnection } from "typeorm";
 import routes from "./routes/app/main";
-import { nextGuard } from "./middlewares/next";
+import { nextGuard } from "./middlewares/guard";
 
 // Express.js dependencies
 const express = require('express')

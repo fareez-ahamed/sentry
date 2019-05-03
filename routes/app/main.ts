@@ -12,12 +12,19 @@ router.post('/login', (req, res) => {
       if(result.user.role === 'admin') {
         res.redirect('/admin')
       } else {
-        res.redirect('/home')
+        res.redirect('/')
       }
     } else {
       res.send("Failure")
     }
   }).catch(e => res.send(e.toString()))
+})
+
+router.get('/logout', (req, res) => {
+  if(req.session.user) {
+    delete req.session.user
+    res.redirect('/')
+  }
 })
 
 export default router

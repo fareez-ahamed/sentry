@@ -1,5 +1,6 @@
 
 const guardedRoutes = [
+  '/',
   '/admin',
   '/home'
 ];
@@ -21,7 +22,7 @@ export const nextGuard = (req, res, next) => {
       // console.log(req.session.user)
       next()
     } else {
-      res.redirect('/')
+      res.redirect('/login')
     }
   } else {
     next()
