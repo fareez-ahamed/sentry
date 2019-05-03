@@ -1,10 +1,13 @@
 import { createConnection } from "typeorm";
 import routes from "./routes/app/main";
 
+// Express.js dependencies
 const express = require('express')
-const next = require('next')
 const bodyParser = require('body-parser')
+const cookieSession = require('cookie-session')
 
+// Next.js integration
+const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
@@ -21,9 +24,13 @@ app.prepare()
     console.log("Setting up the Routes")
     const server = express()
 
+    //Trust Proxy
+    server.set("trust proxy", 1)
+
     //Global Middlewares
     server.use(bodyParser.json())
     server.use(bodyParser.urlencoded({ extended: false }))
+    server.use(cookieSession({ name: 'sentry', secret: '123456' }))
 
     //Route handler for app POST requests
     server.use('/', routes)
