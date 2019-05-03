@@ -1,8 +1,8 @@
 import Head from "next/head";
 
-export default function BaseLayout({ title, children, bgcolor = "#aaaaaa" }) {
+export default function BaseLayout({ title, children}) {
   return (
-    <div style={{ backgroundColor: bgcolor }}>
+    <div>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />

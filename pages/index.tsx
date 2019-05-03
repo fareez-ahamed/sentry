@@ -1,19 +1,11 @@
-import { Segment, Menu } from "semantic-ui-react";
+
 import BaseLayout from "../components/BaseLayout";
-import Link from "next/link";
+import { UserNavbar } from "../components/Navbar";
 
 export default function Home (props) {
   return (
     <BaseLayout title="Home">
-      <Segment inverted>
-        <Menu inverted secondary>
-          <Menu.Item name="home"/>
-          <Menu.Item name="settings"/>
-          <Link href="/logout">
-            <Menu.Item as="a" name="logout" position="right" />
-          </Link>
-        </Menu>
-      </Segment>
+      <UserNavbar />
     </BaseLayout>
   )
 }

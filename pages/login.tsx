@@ -4,7 +4,7 @@ import { Grid, Header, Form, Segment, Button, Icon }  from 'semantic-ui-react';
 
 const LoginPage = () => {
   return (
-    <BaseLayout title="Sign In" bgcolor="#eaeaea">
+    <BaseLayout title="Sign In">
        <style>{`
       body > div,
       body > div > div {
@@ -17,7 +17,7 @@ const LoginPage = () => {
             Sentry
           </Header>
           <Form size="large" action="login" method="post">
-            <Segment stacked>
+            <Segment>
               <Form.Input name="email" icon="user" iconPosition="left" placeholder="Email" />
               <Form.Input name="password" icon="lock" iconPosition="left" placeholder="Password" type="password" />
               <Button type="submit" icon color="blue" size="large" labelPosition="right" fluid>
