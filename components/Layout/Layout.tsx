@@ -7,7 +7,7 @@ type Props = {
   title?: string,
 }
 
-const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the default title' }) => (
+const Layout = ({ children, title = 'This is the default title' }) => (
   <BaseLayout title="{props.title}">
     <header>
       <nav>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NextContext } from 'next'
 import Link from 'next/link';
 
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
 import List from '../components/List'
 import IDataObject from '../interfaces'
 import { findAll } from '../utils/sample-api';

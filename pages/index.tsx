@@ -1,5 +1,5 @@
 
-import BaseLayout from "../components/BaseLayout";
+import BaseLayout from "../components/Layout/BaseLayout";
 import { UserNavbar } from "../components/Navbar";
 
 export default function Home (props) {

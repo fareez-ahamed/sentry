@@ -1,5 +1,5 @@
 import * as React from 'react'
-import BaseLayout from '../components/BaseLayout';
+import BaseLayout from '../components/Layout/BaseLayout';
 import { Grid, Header, Form, Segment, Button, Icon }  from 'semantic-ui-react';
 
 const LoginPage = () => {
