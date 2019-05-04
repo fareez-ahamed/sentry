@@ -1,20 +1,24 @@
 import BaseLayout from "./BaseLayout";
-import { AdminNavbar } from "../Navbar";
-import { Segment, Header } from "semantic-ui-react";
-import Sidebar from "../Sidebar";
+import Navbar, { NavbarConfig } from "../Navbar";
+import { Header } from "semantic-ui-react";
+import Sidebar, { MenuConfig } from "../Sidebar";
 import Container from "../Container";
 
-const sidebarMap = {
-  'dashboard' : '/admin',
-  'users' : '/admin/users'
-}
+const sidebarConfig : MenuConfig[] = [
+  { name: 'dashboard', url: '/admin'  },
+  { name: 'users', url: '/admin/users'  }
+]
+
+const navbarConfig : NavbarConfig[] = [
+  { name: 'logout', url: '/logout', position: "right" }
+]
 
 export default function AdminLayout({title = 'Admin', children, url}) {
   return (
     <BaseLayout title={title}>
-      <AdminNavbar />
+      <Navbar config={navbarConfig}></Navbar>
       <Container>
-        <Sidebar map={sidebarMap} url={url} />
+        <Sidebar config={sidebarConfig} url={url} />
         <div style={{ flex: 1, marginLeft: 30}}>
           <Header>{title}</Header>
           <div style={{ marginTop: 20 }}>

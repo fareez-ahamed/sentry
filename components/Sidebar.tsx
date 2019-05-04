@@ -1,30 +1,16 @@
 import { Menu, Input } from "semantic-ui-react";
 import Link from "next/link";
-import { NextContext } from "next";
 
-const nameOfUrl = (url: string, map) : string => {
-  for (const key in map) {
-    if (map.hasOwnProperty(key)) {
-      if(map[key] === url)
-        return key
-    }
-  }
+export interface MenuConfig {
+  name: string,
+  url: string
 }
 
-const isActive = (url: string, name: string, map) : boolean => nameOfUrl(url, map) === name
+const isActive = (url: string, name: string, config: MenuConfig[]) : boolean => {
+  return config.find(item => item.url === url).name === name
+}
 
-const Sidebar = ({map, url}) => {
-
-  let menus : { name: string, url: string }[] = [];
-
-  for(const key in map) {
-    if(map.hasOwnProperty(key)) {
-      menus.push({
-        name: key,
-        url: url
-      })
-    }
-  }
+const Sidebar = ({config, url}) => {
 
   return (
     <Menu vertical>
@@ -32,17 +18,11 @@ const Sidebar = ({map, url}) => {
         <Input icon='search' placeholder='Search mail...' />
       </Menu.Item>
 
-      {menus.map((item) => (
+      {config.map((item) => (
         <Link href={item.url}>
-          <Menu.Item name={item.name} active={isActive(url, item.name, map)} />
+          <Menu.Item name={item.name} active={isActive(url, item.name, config)} />
         </Link>
       ))}
-
-      
-{/* 
-      <Link href="/admin/users">
-        <Menu.Item name="users" active={isActive(url, "users")} />
-      </Link> */}
     </Menu>
   )
 }
