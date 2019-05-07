@@ -17,7 +17,7 @@ export default function AdminLayout({title = 'Admin', children, url}) {
   return (
     <BaseLayout title={title}>
       <Navbar config={navbarConfig}></Navbar>
-      <Container>
+      <Container marginTop={80}>
         <Sidebar config={sidebarConfig} url={url} />
         <div style={{ flex: 1, marginLeft: 30}}>
           <Header>{title}</Header>

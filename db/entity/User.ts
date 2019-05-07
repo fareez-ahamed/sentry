@@ -25,15 +25,20 @@ export class User {
     age: number;
 
     @Column({
-        default: ""
+        default: "",
+        select: false
     })
     passwordHash: string;
 
-    @Column({ default: "initial" })
+    @Column({ 
+        default: "initial",
+        select: false
+    })
     passwordType: PasswordType;
 
     @Column({
-        default: "user"
+        default: "user",
+        select: false
     })
     role: UserRole;
 

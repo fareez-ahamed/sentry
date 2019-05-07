@@ -1,5 +1,6 @@
 import { Segment, Menu } from "semantic-ui-react";
 import Link from "next/link";
+import Container from './Container';
 
 export interface NavbarConfig {
   name: string,
@@ -8,13 +9,15 @@ export interface NavbarConfig {
 }
 
 const Navbar = ({config}) => {
-  return(
+  return(    
     <Menu inverted fixed="top" size="large">
-      {config.map(item => (
-        <Link href={item.url}>
-          <Menu.Item name={item.name} position={item.position} />
-        </Link>
-      ))}
+      <Container>
+        {config.map(item => (
+          <Link href={item.url}>
+            <Menu.Item name={item.name} position={item.position} />
+          </Link>
+        ))}
+      </Container>
     </Menu>
   )
 }

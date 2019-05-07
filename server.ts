@@ -1,5 +1,6 @@
 import { createConnection } from "typeorm";
 import routes from "./routes/app/main";
+import userApi from './routes/api/users';
 import { nextGuard } from "./middlewares/guard";
 
 // Express.js dependencies
@@ -36,6 +37,7 @@ app.prepare()
 
     //Route handler for app POST requests
     server.use('/', routes)
+    server.use('/api/users', userApi)
 
     //Route handler for Next.js Pages
     server.get('*', (req, res) => handle(req, res))

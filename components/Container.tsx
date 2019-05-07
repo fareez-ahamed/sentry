@@ -1,14 +1,15 @@
 
-export default function Container(props) {
+export default function Container({ marginTop = 0, children }) {
   return (
     <div style={{
         display: 'flex',
-        marginTop: 80,
+        marginTop: marginTop,
         marginLeft: 'auto',
         marginRight: 'auto',
-        maxWidth: 1200
+        maxWidth: 1200,
+        width: '100%'
     }}>
-    {props.children}
+    {children}
     </div>
   )
 }
