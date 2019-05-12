@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import * as React from 'react'
 
-import IDataObject from '../interfaces'
+import IDataObject from '../common/interfaces'
 
 interface Props {
   data: IDataObject,

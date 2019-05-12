@@ -1,4 +1,4 @@
-import IDataObject from "../interfaces";
+import IDataObject from "../common/interfaces";
 
 /** Dummy user data. */
 export const dataArray: IDataObject[] = [

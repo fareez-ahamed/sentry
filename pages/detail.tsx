@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextContext } from 'next'
 import Layout from '../components/Layout/Layout'
-import IDataObject from '../interfaces'
+import IDataObject from '../common/interfaces'
 import { findData } from '../utils/sample-api'
 import ListDetail from '../components/ListDetail';
 

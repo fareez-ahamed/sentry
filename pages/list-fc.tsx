@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import Layout from '../components/Layout/Layout'
 import List from '../components/List'
-import IDataObject from '../interfaces'
+import IDataObject from '../common/interfaces'
 import { findAll } from '../utils/sample-api';
 
 type Props = {

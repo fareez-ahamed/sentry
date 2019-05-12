@@ -1,5 +1,5 @@
 import * as React from 'react'
-import IDataObject from '../interfaces'
+import IDataObject from '../common/interfaces'
 import ListItem from './ListItem'
 
 interface IProps {

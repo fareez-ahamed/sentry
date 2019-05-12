@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import IDataObject from '../interfaces';
+import IDataObject from '../common/interfaces';
 
 interface IListDetailProps {
   item: IDataObject;
