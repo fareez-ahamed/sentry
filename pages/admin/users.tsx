@@ -1,11 +1,10 @@
-import AdminLayout from "../../components/Layout/AdminLayout";
-import { Table, Header } from "semantic-ui-react";
-import { NextContext } from "next";
-import { getRepository } from "typeorm";
-import { User } from "../../db/entity/User";
+import fetch from 'isomorphic-unfetch';
+import { NextContext } from 'next';
+import { Table } from 'semantic-ui-react';
+import AdminLayout from '../../components/Layout/AdminLayout';
 
 const UserPage = (props) => {
-  console.log("PROPS")
+  console.log('PROPS')
   console.log(props.path)
   return (
     <AdminLayout title="Manage Users" url={props.path}>
@@ -17,12 +16,14 @@ const UserPage = (props) => {
           <Table.HeaderCell>Email</Table.HeaderCell>
         </Table.Header>
         <Table.Body>
-          <Table.Row>
-          <Table.Cell>1</Table.Cell>
-          <Table.Cell>1</Table.Cell>
-          <Table.Cell>1</Table.Cell>
-          <Table.Cell>1</Table.Cell>
-          </Table.Row>
+          {props.users.map(user => (
+            <Table.Row>
+              <Table.Cell>{user.id}</Table.Cell>
+              <Table.Cell>{user.firstName}</Table.Cell>
+              <Table.Cell>{user.lastName}</Table.Cell>
+              <Table.Cell>{user.email}</Table.Cell>
+            </Table.Row>
+          ))}
         </Table.Body>
       </Table>
     </AdminLayout>
@@ -30,9 +31,8 @@ const UserPage = (props) => {
 }
 
 UserPage.getInitialProps = async (context: NextContext) => {
-  return {
-    path: context.pathname
-  }
+  return fetch('http://localhost:3000/api/users').then(res => res.json())
+              .then(data => ({ users: data, path: context.pathname }))
 }
 
 export default UserPage;

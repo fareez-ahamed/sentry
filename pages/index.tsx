@@ -1,11 +1,9 @@
 
-import BaseLayout from "../components/Layout/BaseLayout";
-import { UserNavbar } from "../components/Navbar";
+import BaseLayout from '../components/Layout/BaseLayout';
 
-export default function Home (props) {
+export default function Home(props) {
   return (
     <BaseLayout title="Home">
-      <UserNavbar />
     </BaseLayout>
   )
 }

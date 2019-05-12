@@ -1,6 +1,6 @@
 import * as React from 'react'
+import { Button, Form, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import BaseLayout from '../components/Layout/BaseLayout';
-import { Grid, Header, Form, Segment, Button, Icon }  from 'semantic-ui-react';
 
 const LoginPage = () => {
   return (

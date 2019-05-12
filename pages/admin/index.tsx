@@ -1,5 +1,5 @@
-import AdminLayout from "../../components/Layout/AdminLayout";
-import { NextContext } from "next";
+import { NextContext } from 'next';
+import AdminLayout from '../../components/Layout/AdminLayout';
 
 const Admin = (props) => {
   return (
@@ -11,7 +11,7 @@ const Admin = (props) => {
 
 Admin.getInitialProps = async (context: NextContext) => {
   return {
-    path: context.pathname
+    path: context.pathname,
   }
 }
 

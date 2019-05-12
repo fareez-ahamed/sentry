@@ -7,7 +7,8 @@ export interface MenuConfig {
 }
 
 const isActive = (url: string, name: string, config: MenuConfig[]): boolean => {
-  return config.find(item => item.url === url).name === name
+  const matchedItem = config.find(item => item.url === url)
+  return matchedItem ? matchedItem.name === name : false
 }
 
 const Sidebar = ({config, url}) => {
@@ -19,7 +20,7 @@ const Sidebar = ({config, url}) => {
       </Menu.Item>
 
       {config.map((item) => (
-        <Link href={item.url}>
+        <Link key={item.name} href={item.url}>
           <Menu.Item name={item.name} active={isActive(url, item.name, config)} />
         </Link>
       ))}

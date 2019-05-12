@@ -38,7 +38,6 @@ export class User {
 
     @Column({
         default: 'user',
-        select: false,
     })
     public role: UserRole;
 
