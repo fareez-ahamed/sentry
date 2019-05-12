@@ -2,6 +2,7 @@ import { Header } from 'semantic-ui-react';
 import Container from '../Container';
 import Navbar, { NavbarConfig } from '../Navbar';
 import Sidebar, { MenuConfig } from '../Sidebar';
+import SlidingContainer from '../SlidingContainer';
 import BaseLayout from './BaseLayout';
 
 const sidebarConfig: MenuConfig[] = [
@@ -26,6 +27,7 @@ export default function AdminLayout({title = 'Admin', children, url}) {
           </div>
         </div>
       </Container>
+      <SlidingContainer />
     </BaseLayout>
   )
 }

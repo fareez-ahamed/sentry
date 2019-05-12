@@ -1,19 +1,33 @@
-import fetch from 'isomorphic-unfetch';
-import { NextContext } from 'next';
-import { Table } from 'semantic-ui-react';
-import AdminLayout from '../../components/Layout/AdminLayout';
+import fetch from 'isomorphic-unfetch'
+import { NextContext } from 'next'
+import { Button, Icon, Table } from 'semantic-ui-react'
+import Api from '../../client/api';
+import SlidingContainerService from '../../client/services/SlidingContainerService'
+import AdminLayout from '../../components/Layout/AdminLayout'
 
 const UserPage = (props) => {
-  console.log('PROPS')
-  console.log(props.path)
+
+  const openSlider = () => {
+    SlidingContainerService.triggerOpen()
+  }
+
   return (
     <AdminLayout title="Manage Users" url={props.path}>
       <Table>
         <Table.Header>
-          <Table.HeaderCell>ID</Table.HeaderCell>
-          <Table.HeaderCell>First Name</Table.HeaderCell>
-          <Table.HeaderCell>Last Name</Table.HeaderCell>
-          <Table.HeaderCell>Email</Table.HeaderCell>
+          <Table.Row>
+            <Table.HeaderCell colSpan="4">
+              <Button icon labelPosition="left" primary size="small" onClick={openSlider}>
+                <Icon name="user" /> Add User
+              </Button>
+            </Table.HeaderCell>
+          </Table.Row>
+          <Table.Row>
+            <Table.HeaderCell>ID</Table.HeaderCell>
+            <Table.HeaderCell>First Name</Table.HeaderCell>
+            <Table.HeaderCell>Last Name</Table.HeaderCell>
+            <Table.HeaderCell>Email</Table.HeaderCell>
+          </Table.Row>
         </Table.Header>
         <Table.Body>
           {props.users.map(user => (
@@ -25,14 +39,17 @@ const UserPage = (props) => {
             </Table.Row>
           ))}
         </Table.Body>
+        <Table.Footer>
+          <Table.Row>
+          </Table.Row>
+        </Table.Footer>
       </Table>
     </AdminLayout>
   )
 }
 
 UserPage.getInitialProps = async (context: NextContext) => {
-  return fetch('http://localhost:3000/api/users').then(res => res.json())
-              .then(data => ({ users: data, path: context.pathname }))
+  return Api.getUsers().then(data => ({ users: data, path: context.pathname }))
 }
 
 export default UserPage;
