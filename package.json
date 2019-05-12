@@ -2,7 +2,7 @@
    "name": "with-typescript",
    "version": "1.0.0",
    "scripts": {
-      "dev": "ts-node server.ts",
+      "dev": "ts-node-dev server.ts",
       "build": "next build",
       "type-check": "tsc",
       "setup": "ts-node scripts/setup.ts"
@@ -28,6 +28,7 @@
       "@types/react": "^16.4.16",
       "@types/react-dom": "16.0.11",
       "ts-node": "3.3.0",
+      "ts-node-dev": "^1.0.0-pre.39",
       "typescript": "2.5.2"
    },
    "license": "ISC"
