@@ -1,15 +1,10 @@
-import fetch from 'isomorphic-unfetch'
 import { NextContext } from 'next'
+import Link from 'next/link';
 import { Button, Icon, Table } from 'semantic-ui-react'
-import Api from '../../client/api';
-import SlidingContainerService from '../../client/services/SlidingContainerService'
-import AdminLayout from '../../components/Layout/AdminLayout'
+import Api from '../../../client/api';
+import AdminLayout from '../../../components/Layout/AdminLayout'
 
 const UserPage = (props) => {
-
-  const openSlider = () => {
-    SlidingContainerService.triggerOpen()
-  }
 
   return (
     <AdminLayout title="Manage Users" url={props.path}>
@@ -17,9 +12,11 @@ const UserPage = (props) => {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell colSpan="4">
-              <Button icon labelPosition="left" primary size="small" onClick={openSlider}>
-                <Icon name="user" /> Add User
-              </Button>
+              <Link href="/admin/users/create">
+                <Button icon labelPosition="left" primary size="small">
+                  <Icon name="user" /> Add User
+                </Button>
+              </Link>
             </Table.HeaderCell>
           </Table.Row>
           <Table.Row>
