@@ -1,7 +1,7 @@
-import { getRepository } from "typeorm";
-import { User } from "../db/entity/User";
+import { getRepository } from 'typeorm';
+import { User } from '../db/entity/User';
 
-const bcrypt = require("bcrypt")
+import bcrypt = require('bcrypt')
 
 export const validateUser = (email, password): Promise < { authenticated: boolean, user: User } > => {
   let user;
@@ -11,9 +11,9 @@ export const validateUser = (email, password): Promise < { authenticated: boolea
         user = users[0]
         return users[0].passwordHash
       } else {
-        throw Error("User not found")
+        throw Error('User not found')
       }
     })
     .then(originalHash => bcrypt.compare(password, originalHash))
-    .then(authenticated => { return { authenticated, user } })
+    .then(authenticated => ({ authenticated, user }))
 }

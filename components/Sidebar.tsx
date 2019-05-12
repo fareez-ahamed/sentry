@@ -1,12 +1,12 @@
-import { Menu, Input } from "semantic-ui-react";
-import Link from "next/link";
+import Link from 'next/link';
+import { Input, Menu } from 'semantic-ui-react';
 
 export interface MenuConfig {
   name: string,
   url: string
 }
 
-const isActive = (url: string, name: string, config: MenuConfig[]) : boolean => {
+const isActive = (url: string, name: string, config: MenuConfig[]): boolean => {
   return config.find(item => item.url === url).name === name
 }
 
@@ -15,7 +15,7 @@ const Sidebar = ({config, url}) => {
   return (
     <Menu vertical>
       <Menu.Item>
-        <Input icon='search' placeholder='Search mail...' />
+        <Input icon="search" placeholder="Search mail..." />
       </Menu.Item>
 
       {config.map((item) => (

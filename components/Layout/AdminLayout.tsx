@@ -1,16 +1,16 @@
-import BaseLayout from "./BaseLayout";
-import Navbar, { NavbarConfig } from "../Navbar";
-import { Header } from "semantic-ui-react";
-import Sidebar, { MenuConfig } from "../Sidebar";
-import Container from "../Container";
+import { Header } from 'semantic-ui-react';
+import Container from '../Container';
+import Navbar, { NavbarConfig } from '../Navbar';
+import Sidebar, { MenuConfig } from '../Sidebar';
+import BaseLayout from './BaseLayout';
 
-const sidebarConfig : MenuConfig[] = [
+const sidebarConfig: MenuConfig[] = [
   { name: 'dashboard', url: '/admin'  },
-  { name: 'users', url: '/admin/users'  }
+  { name: 'users', url: '/admin/users'  },
 ]
 
-const navbarConfig : NavbarConfig[] = [
-  { name: 'logout', url: '/logout', position: "right" }
+const navbarConfig: NavbarConfig[] = [
+  { name: 'logout', url: '/logout', position: 'right' },
 ]
 
 export default function AdminLayout({title = 'Admin', children, url}) {

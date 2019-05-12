@@ -8,7 +8,9 @@
         "object-literal-sort-keys": false,
         "semicolon": false,
         "arrow-parens": false,
-        "no-console": false
+        "no-console": false,
+        "quotemark": [true, "single", "jsx-double"],
+        "interface-name": false
     },
     "rulesDirectory": []
 }

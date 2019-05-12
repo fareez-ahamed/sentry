@@ -1,7 +1,7 @@
-import { getRepository } from "typeorm";
-import { User } from "../../db/entity/User";
+import { getRepository } from 'typeorm';
+import { User } from '../../db/entity/User';
 
-import express = require("express")
+import express = require('express')
 const router = express.Router();
 
 const usersAll = () => {
@@ -11,7 +11,7 @@ const usersAll = () => {
   });
 }
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   usersAll().then(users => {
     res.json(users)
   })

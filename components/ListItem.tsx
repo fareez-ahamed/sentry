@@ -1,9 +1,9 @@
-import * as React from 'react'
 import Link from 'next/link';
+import * as React from 'react'
 
 import IDataObject from '../interfaces'
 
-type Props = {
+interface Props {
   data: IDataObject,
 }
 

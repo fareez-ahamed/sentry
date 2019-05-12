@@ -1,45 +1,45 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
-type UserRole = "admin" | "user";
+type UserRole = 'admin' | 'user';
 
-type PasswordType = "productive" | "initial";
+type PasswordType = 'productive' | 'initial';
 
 @Entity()
 export class User {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    public id: number;
 
     @Column({
-        unique: true
+        unique: true,
     })
-    email: string;
+    public email: string;
 
     @Column()
-    firstName: string;
+    public firstName: string;
 
     @Column()
-    lastName: string;
+    public lastName: string;
 
     @Column()
-    age: number;
+    public age: number;
 
     @Column({
-        default: "",
-        select: false
+        default: '',
+        select: false,
     })
-    passwordHash: string;
-
-    @Column({ 
-        default: "initial",
-        select: false
-    })
-    passwordType: PasswordType;
+    public passwordHash: string;
 
     @Column({
-        default: "user",
-        select: false
+        default: 'initial',
+        select: false,
     })
-    role: UserRole;
+    public passwordType: PasswordType;
+
+    @Column({
+        default: 'user',
+        select: false,
+    })
+    public role: UserRole;
 
 }
