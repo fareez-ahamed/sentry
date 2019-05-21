@@ -1,15 +1,37 @@
 import { Formik } from 'formik'
 import * as React from 'react'
-import { Button, Form, Header, Input, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Input, Message, Segment } from 'semantic-ui-react'
+import Api from '../../../client/api'
 import AdminLayout from '../../../components/Layout/AdminLayout'
 
-class CreateUserPage extends React.Component {
+interface State {
+  form: {
+    firstName: string,
+    lastName: string,
+    email: string,
+  }
+}
+
+interface Props {
+  path: string
+}
+
+interface FormErrors {
+  firstName?: boolean,
+  email?: boolean,
+  messages?: string[],
+  error: boolean
+}
+
+class CreateUserPage extends React.Component<Props, State> {
 
   private formInitial = {
     firstName: '',
     lastName: '',
     email: '',
   }
+
+  private changeHandler
 
   constructor(props: { path: string }) {
     super(props)
@@ -32,8 +54,8 @@ class CreateUserPage extends React.Component {
     this.setState(state)
   }
 
-  public validateForm(values) {
-    const errors: { firstName?, email?, messages?: string[], error: boolean } = { messages: [], error: false }
+  public validateForm(values): FormErrors {
+    const errors: FormErrors = { messages: [], error: false }
     if (!values.firstName) {
       errors.firstName = true
       errors.messages.push('First Name is required')
@@ -48,7 +70,15 @@ class CreateUserPage extends React.Component {
 
   public realHandleSubmit(values, {setSubmitting}) {
     console.log('Submitting')
-    setTimeout(() => setSubmitting(false), 2000)
+    Api.createUser({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: '123456',
+    }).then(result => {
+      setSubmitting(false)
+
+    })
   }
 
   public render() {
@@ -57,7 +87,7 @@ class CreateUserPage extends React.Component {
         <Segment>
         <Formik initialValues={this.formInitial} validate={this.validateForm} onSubmit={this.realHandleSubmit}>
           {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (
-            <Form success onSubmit={handleSubmit} error={errors.error}>
+            <Form success onSubmit={handleSubmit} error={errors.error as any}>
               <Form.Group widths="equal">
                 <Form.Field control={Input} name="firstName" onChange={handleChange} value={values.firstName}
                     placeholder="First Name" label="First Name" error={errors.firstName ? true : false}/>
@@ -66,7 +96,7 @@ class CreateUserPage extends React.Component {
               </Form.Group>
               <Form.Field name="email" control={Input} label="Email" placeholder="Email"
                   onChange={handleChange} value={values.email} error={errors.email ? true : false}/>
-              <Message error header="Error!" list={errors.messages} />
+              <Message error header="Error!" list={errors.messages as any} />
               <Button primary loading={isSubmitting} type="submit">Submit</Button>
             </Form>
           )}

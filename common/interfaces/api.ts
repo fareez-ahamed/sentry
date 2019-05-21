@@ -1,4 +1,7 @@
 
+/**
+ * IUser
+ */
 export interface IUser {
   firstName: string,
   lastName: string,
@@ -6,6 +9,9 @@ export interface IUser {
   email: string
 }
 
+/**
+ * ValidationResult
+ */
 export interface ValidationResult {
   valid: boolean,
   details: Array<{
@@ -14,16 +20,34 @@ export interface ValidationResult {
   }>
 }
 
-type ApiResponseStatus = 'success' | 'failure'
+/**
+ * ApiResponse
+ */
+export type ApiResponse = ApiSuccessResponse | ApiValidationFailedResponse | ApiInternalServerErrorResponse
 
-export class ApiResponse {
-  public message ?: string
-  public status: ApiResponseStatus
-  public validation?: ValidationResult
+/**
+ * ApiSuccessResponse
+ */
+export interface ApiSuccessResponse {
+  code: 200,
+  status: 'success',
+  message: string
+}
 
-  constructor(message: string, status?: ApiResponseStatus, validationResult?: ValidationResult) {
-    this.message = message
-    this.status = status ? status : 'success'
-    this.validation = validationResult
-  }
+/**
+ * ApiValidationFailedResponse
+ */
+export interface ApiValidationFailedResponse {
+  code: 422,
+  status: 'failure',
+  validation: ValidationResult
+}
+
+/**
+ * ApiInternalServerErrorResponse
+ */
+export interface ApiInternalServerErrorResponse {
+  code: 500,
+  status: 'failure',
+  message: string
 }

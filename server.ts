@@ -30,8 +30,8 @@ app.prepare()
     server.set('trust proxy', 1)
 
     // Global Middlewares
-    server.use(bodyParser.json())
     server.use(bodyParser.urlencoded({ extended: false }))
+    server.use(bodyParser.json())
     server.use(cookieSession({ name: 'sentry', secret: '123456' } as CookieSessionInterfaces.CookieSessionOptions))
     server.use(nextGuard)
 

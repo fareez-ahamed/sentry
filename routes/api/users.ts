@@ -4,6 +4,7 @@ import { User } from '../../db/entity/User';
 import express = require('express')
 import { ApiResponse, IUser, ValidationResult } from '../../common/interfaces/api';
 import { isEmpty } from '../../common/validators';
+import { error, success, validationError } from '../../utils/api-utils';
 const router = express.Router();
 
 /**
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
  * Create Users
  */
 router.post('/', (req, res) => {
-  const data = req.body.data
+  const data = req.body
   const result = validateCreation(data)
   if (result.valid) {
     getRepository(User).save({
@@ -27,10 +28,10 @@ router.post('/', (req, res) => {
       password: data.password,
       firstName: data.firstName,
       lastName: data.lastName,
-    }).then(() => res.send(new ApiResponse('Successfully Created User')))
-    .catch(e => res.send(new ApiResponse(e.toString(), 'failure')))
+    }).then(() => res.send(success('Successfully created user')))
+    .catch(e => res.send(error(e.toString())))
   } else {
-    res.send(new ApiResponse('Validation Failed', 'failure', result))
+    res.send(validationError(result))
   }
 })
 
@@ -51,7 +52,7 @@ const usersAll = () => {
 
 /**
  * Validate the user object before saving to database
- * @param user 
+ * @param user
  */
 const validateCreation = (user: IUser): ValidationResult => {
 
