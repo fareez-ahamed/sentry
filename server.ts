@@ -44,7 +44,7 @@ app.prepare()
 
     // Starting the Server
     console.log('Starting the Server')
-    server.listen(3000, (err) => {
+    server.listen(3000, (err: any) => {
       if (err) { throw err }
       console.log('> Ready on http://localhost:3000')
     })

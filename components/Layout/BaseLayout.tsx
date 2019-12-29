@@ -1,6 +1,10 @@
 import Head from 'next/head';
 
-export default function BaseLayout({ title, children}) {
+interface Props {
+  title: string
+}
+
+const BaseLayout: React.FC<Props> = ({ title, children }) => {
   return (
     <div>
       <Head>
@@ -13,3 +17,5 @@ export default function BaseLayout({ title, children}) {
     </div>
   )
 }
+
+export default BaseLayout

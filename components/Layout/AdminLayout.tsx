@@ -14,7 +14,12 @@ const navbarConfig: NavbarConfig[] = [
   { name: 'logout', url: '/logout', position: 'right' },
 ]
 
-export default function AdminLayout({title = 'Admin', children, url}) {
+interface Props {
+  title?: string,
+  url: string
+}
+
+const AdminLayout: React.FC<Props> = ({title = 'Admin', children, url}) => {
   return (
     <BaseLayout title={title}>
       <Navbar config={navbarConfig}></Navbar>
@@ -31,3 +36,5 @@ export default function AdminLayout({title = 'Admin', children, url}) {
     </BaseLayout>
   )
 }
+
+export default AdminLayout

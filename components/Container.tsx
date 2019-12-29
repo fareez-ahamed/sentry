@@ -1,5 +1,9 @@
 
-export default function Container({ marginTop = 0, children }) {
+interface Props {
+  marginTop?: number
+}
+
+const Container: React.FC<Props> = ({ marginTop = 0, children }) => {
   return (
     <div style={{
         display: 'flex',
@@ -14,3 +18,5 @@ export default function Container({ marginTop = 0, children }) {
     </div>
   )
 }
+
+export default Container

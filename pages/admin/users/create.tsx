@@ -31,7 +31,7 @@ class CreateUserPage extends React.Component<Props, State> {
     email: '',
   }
 
-  private changeHandler
+  private changeHandler: CallableFunction
 
   constructor(props: { path: string }) {
     super(props)
@@ -45,7 +45,7 @@ class CreateUserPage extends React.Component<Props, State> {
     this.changeHandler = this.realHandleChange.bind(this)
   }
 
-  public realHandleChange(event) {
+  public realHandleChange(event: React.SyntheticEvent<KeyboardEvent>) {
     const state = {...this.state}
     console.log(event.target.value)
     state.form.firstName = event.target.value

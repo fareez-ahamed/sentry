@@ -8,7 +8,11 @@ export interface NavbarConfig {
   position: 'left' | 'right'
 }
 
-const Navbar = ({config}) => {
+interface Props {
+  config: NavbarConfig[]
+}
+
+const Navbar: React.FC<Props> = ({config}) => {
   return(
     <Menu inverted fixed="top" size="large">
       <Container>

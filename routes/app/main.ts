@@ -8,7 +8,9 @@ router.post('/login', (req, res) => {
   validateUser(req.body.email, req.body.password).then(result => {
     if (result.authenticated) {
       // Add user to session
-      req.session.user = result.user
+      if (req.session) {
+        req.session.user = result.user
+      }
       if (result.user.role === 'admin') {
         res.redirect('/admin')
       } else {
@@ -21,7 +23,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  if (req.session.user) {
+  if (req.session && req.session.user) {
     delete req.session.user
     res.redirect('/')
   }

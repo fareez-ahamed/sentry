@@ -5,17 +5,17 @@ interface State {
   visible: boolean
 }
 
-class SlidingContainer extends React.Component {
+class SlidingContainer extends React.Component<{}, State> {
 
   public state: State
 
-  constructor(props) {
+  constructor(props: {}) {
     super(props)
     this.state = { visible: false }
   }
 
   public componentDidMount() {
-    SlidingContainerService.subscribe((open) => {
+    SlidingContainerService.subscribe((open: boolean) => {
       this.setState({visible: open})
     })
   }
