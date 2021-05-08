@@ -23,7 +23,7 @@
       "react-dom": "^16.8.6",
       "reflect-metadata": "^0.1.10",
       "semantic-ui-react": "^0.86.0",
-      "typeorm": "0.2.16"
+      "typeorm": "0.2.25"
    },
    "devDependencies": {
       "@types/bcrypt": "^3.0.0",
